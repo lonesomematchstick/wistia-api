@@ -3,4 +3,6 @@ module Wistia
 
   @@password = nil
   @@format = :json
+  @@mode = nil
+  @@test_project_id = nil
 end

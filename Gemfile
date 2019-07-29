@@ -10,5 +10,6 @@ group :development do
   gem 'jeweler', '~> 1.8'
 	gem 'simplecov', :require => false
   gem 'rspec', '~> 2.12'
+  gem 'multipart-post'
 end
 

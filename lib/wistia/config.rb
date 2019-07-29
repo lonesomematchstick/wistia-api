@@ -1,6 +1,29 @@
 require 'wistia/initialization'
 
 module Wistia
+
+  # Setting up mode getter and setter to handle when we are in different environments (i.e. test/dev vs. production)
+  def self.mode
+    @@mode
+  end
+
+  def self.mode=(mode_string)
+    @@mode = mode_string
+  end
+
+  def self.test_project_id
+    @@test_project_id
+  end
+
+  def self.test_project_id=(test_project)
+    @@test_project_id = test_project
+  end
+
+  def self.test?
+    @@mode.to_s.downcase == "test"
+  end
+
+
   # Specifies a new configuration to use for the API.
   # Accepts either a Hash or a String pointing to a YAML configuration file.
   #
