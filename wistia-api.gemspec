@@ -6,7 +6,7 @@
 
 Gem::Specification.new do |s|
   s.name = "wistia-api"
-  s.version = "0.3.0"
+  s.version = "0.3.0.b"
 
   s.required_ruby_version = '>= 2.1'
 

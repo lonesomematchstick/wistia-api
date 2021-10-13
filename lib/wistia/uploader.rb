@@ -20,6 +20,12 @@ module Wistia
       # Build the encrypted request and send it
       http = Net::HTTP.new(self.site.host, self.site.port)
       http.use_ssl = true
+      
+      # This is really bad practice! But due to the recent Let's Encrypt root certificate expiration and the
+      # fact that ruby 2 uses OpenSSL 1.0.1, it cannot verify the certificate chain (https://www.openssl.org/blog/blog/2021/09/13/LetsEncryptRootCertExpire/)
+      # and so far I've been unable to find a way to set the -trusted_first option on OpenSSL.
+      # This should keep things moving, but is a potential for man in the middle attacks...
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       request = Net::HTTP::Post::Multipart.new self.site.request_uri, attributes
       # Get back a response with a JSON body that has all of our media infos from Wistia
